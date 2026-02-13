@@ -9,25 +9,16 @@ from control_msgs.action import FollowJointTrajectory
 from trajectory_msgs.msg import JointTrajectoryPoint
 from .controller_utils import load_controller, switch_controller
 
-# Container example ur3e
-# JOINT_NAMES: list[str] = [
-#     "ur3e_shoulder_pan_joint",
-#     "ur3e_shoulder_lift_joint",
-#     "ur3e_elbow_joint",
-#     "ur3e_wrist_1_joint",
-#     "ur3e_wrist_2_joint",
-#     "ur3e_wrist_3_joint",
-# ]
 
-# Real UR5e
 JOINT_NAMES: list[str] = [
-    "shoulder_pan_joint",
-    "shoulder_lift_joint",
-    "elbow_joint",
-    "wrist_1_joint",
-    "wrist_2_joint",
-    "wrist_3_joint",
+    "ur3e_shoulder_pan_joint",
+    "ur3e_shoulder_lift_joint",
+    "ur3e_elbow_joint",
+    "ur3e_wrist_1_joint",
+    "ur3e_wrist_2_joint",
+    "ur3e_wrist_3_joint",
 ]
+
 
 def build_goal() -> FollowJointTrajectory.Goal:
     """Build a sample joint trajectory goal."""
@@ -35,13 +26,11 @@ def build_goal() -> FollowJointTrajectory.Goal:
     goal.trajectory.joint_names = JOINT_NAMES
     goal.trajectory.points = [
         JointTrajectoryPoint(
-            positions=[0.785, -1.57, 0.785, 0.785, 0.785, 0.785],
-            # positions=[0.0, -1.6, 2.0, 0.0, 0.2, 0.0],
+            positions=[0.0, -1.0, 1.2, 0.0, -1.2, 0.0],
             time_from_start=Duration(seconds=2).to_msg(),
         ),
         JointTrajectoryPoint(
-            positions=[0.0, -1.57, 0.0, 0.0, 0.0, 0.0],
-            # positions=[0.2, -1.6, 1.5, 0.2, -0.5, 0.0],
+            positions=[0.2, -0.8, 0.5, 0.2, -1.0, 0.0],
             time_from_start=Duration(seconds=4).to_msg(),
         ),
     ]
@@ -89,10 +78,10 @@ def main() -> None:
     """Run the trajectory sender entrypoint."""
     rclpy.init()
     node = rclpy.create_node("trajectory_sender")
-    # if not ensure_joint_trajectory_controller(node):
-    #     node.destroy_node()
-    #     rclpy.shutdown()
-    #     return
+    if not ensure_joint_trajectory_controller(node):
+        node.destroy_node()
+        rclpy.shutdown()
+        return
     client = ActionClient(
         node,
         FollowJointTrajectory,
@@ -104,8 +93,6 @@ def main() -> None:
     node.get_logger().info("Server available, sending goal")
 
     goal: FollowJointTrajectory.Goal = build_goal()
-    node.get_logger().info(f"Goal: {goal.trajectory.points[0].positions[0]}")
-
     send_future = client.send_goal_async(goal)
     rclpy.spin_until_future_complete(node, send_future)
     goal_handle = send_future.result()

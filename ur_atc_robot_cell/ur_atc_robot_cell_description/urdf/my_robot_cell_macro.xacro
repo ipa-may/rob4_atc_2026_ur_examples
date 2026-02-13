@@ -77,7 +77,7 @@
     <joint name="base_to_robot_mount" type="fixed">
       <parent link="table"/>
       <child link="robot_mount"/>
-      <origin xyz="0.845 0.85 0" rpy="0 0 ${pi}" />
+      <origin xyz="0.845 1.0 0" rpy="0 0 ${pi}" />
     </joint>
 
     <!--This will create the specific robot-->

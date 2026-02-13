@@ -28,10 +28,10 @@ def main() -> None:
     rclpy.init()
     node = rclpy.create_node("cartesian_motion_sender")
 
-    # if not ensure_cartesian_motion_controller(node):
-    #     node.destroy_node()
-    #     rclpy.shutdown()
-    #     return
+    if not ensure_cartesian_motion_controller(node):
+        node.destroy_node()
+        rclpy.shutdown()
+        return
 
     publisher = node.create_publisher(
         PoseStamped,
@@ -40,20 +40,18 @@ def main() -> None:
     )
 
     target = PoseStamped()
-    # target.header.frame_id = "ur3e_base"
-    target.header.frame_id = "ur5e_base_hhh"
-    target.pose.position.x = -0.463
-    target.pose.position.y = -0.26
-    target.pose.position.z = 0.379
+    target.header.frame_id = "ur3e_base"
+    target.pose.position.x = 0.4
+    target.pose.position.y = 0.0
+    target.pose.position.z = 0.4
     target.pose.orientation.w = 1.0
 
-    node.get_logger().info("Publishing cartesian target frame... and spin")
+    node.get_logger().info("Publishing cartesian target frame...")
     target.header.stamp = node.get_clock().now().to_msg()
     publisher.publish(target)
 
-    # rclpy.spin_once(node, timeout_sec=0.2)
-    rclpy.spin(node)
-    node.get_logger().info("Published!")
+    rclpy.spin_once(node, timeout_sec=0.2)
+    node.get_logger().info("Cartesian motion command complete")
     node.destroy_node()
     rclpy.shutdown()
 
