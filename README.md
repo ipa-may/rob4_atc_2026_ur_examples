@@ -114,7 +114,7 @@ ros2 control switch_controllers --activate scaled_joint_trajectory_controller
 ros2 launch ur_atc_robot_cell_control start_robot.launch.py ur_type:=ur5e robot_ip:=<robot-ip>
 ``` 
 
-cSwitch the controller:
+Switch the controller:
 
 ```sh
 ros2 control switch_controllers --activate motion_control_handle cartesian_motion_controller
