@@ -8,19 +8,19 @@ from controller_utils import load_controller, switch_controller
 from controller_manager_msgs.srv import SwitchController
 
 
-def ensure_cartesian_motion_controller(node) -> bool:
-    """Ensure the cartesian motion controller is loaded and active."""
-    if not load_controller(node, "cartesian_motion_controller"):
-        return False
-    return switch_controller(
-        node,
-        activate=["cartesian_motion_controller"],
-        deactivate=[
-            "scaled_joint_trajectory_controller",
-            "joint_trajectory_controller",
-        ],
-        strictness=SwitchController.Request.BEST_EFFORT,
-    )
+# def ensure_cartesian_motion_controller(node) -> bool:
+#     """Ensure the cartesian motion controller is loaded and active."""
+#     if not load_controller(node, "cartesian_motion_controller"):
+#         return False
+#     return switch_controller(
+#         node,
+#         activate=["cartesian_motion_controller"],
+#         deactivate=[
+#             "scaled_joint_trajectory_controller",
+#             "joint_trajectory_controller",
+#         ],
+#         strictness=SwitchController.Request.BEST_EFFORT,
+#     )
 
 
 def main() -> None:

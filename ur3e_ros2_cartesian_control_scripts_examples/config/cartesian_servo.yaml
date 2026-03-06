@@ -1,0 +1,9 @@
+cartesian_servo:
+  ros__parameters:
+    key_x_positive: "q"
+    key_x_negative: "a"
+    key_y_positive: "w"
+    key_y_negative: "s"
+    key_z_positive: "e"
+    key_z_negative: "d"
+    key_exit: "x"

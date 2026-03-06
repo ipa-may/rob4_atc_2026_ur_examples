@@ -8,6 +8,8 @@ install(
     scripts/controller_utils.py
     scripts/cartesian_motion_sender.py
     scripts/cartesian_compliance_sender.py
+    scripts/cartesian_servo.py
+    scripts/cartesian_force_sender.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -23,6 +25,25 @@ install(
     scripts/cartesian_compliance_sender.py
   DESTINATION lib/${PROJECT_NAME}
   RENAME cartesian_compliance_sender
+)
+
+install(
+  PROGRAMS
+    scripts/cartesian_servo.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME cartesian_servo
+)
+
+install(
+  PROGRAMS
+    scripts/cartesian_force_sender.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME cartesian_force_sender
+)
+
+install(
+  DIRECTORY config
+  DESTINATION share/${PROJECT_NAME}
 )
 
 ament_package()

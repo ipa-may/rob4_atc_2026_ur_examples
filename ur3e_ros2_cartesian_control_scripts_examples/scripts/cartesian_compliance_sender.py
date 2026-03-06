@@ -8,19 +8,19 @@ from controller_utils import load_controller, switch_controller
 from controller_manager_msgs.srv import SwitchController
 
 
-def ensure_cartesian_compliance_controller(node) -> bool:
-    """Ensure the cartesian compliance controller is loaded and active."""
-    if not load_controller(node, "cartesian_compliance_controller"):
-        return False
-    return switch_controller(
-        node,
-        activate=["cartesian_compliance_controller"],
-        deactivate=[
-            "scaled_joint_trajectory_controller",
-            "joint_trajectory_controller",
-        ],
-        strictness=SwitchController.Request.BEST_EFFORT,
-    )
+# def ensure_cartesian_compliance_controller(node) -> bool:
+#     """Ensure the cartesian compliance controller is loaded and active."""
+#     if not load_controller(node, "cartesian_compliance_controller"):
+#         return False
+#     return switch_controller(
+#         node,
+#         activate=["cartesian_compliance_controller"],
+#         deactivate=[
+#             "scaled_joint_trajectory_controller",
+#             "joint_trajectory_controller",
+#         ],
+#         strictness=SwitchController.Request.BEST_EFFORT,
+#     )
 
 
 def main() -> None:
@@ -28,10 +28,10 @@ def main() -> None:
     rclpy.init()
     node = rclpy.create_node("cartesian_compliance_sender")
 
-    if not ensure_cartesian_compliance_controller(node):
-        node.destroy_node()
-        rclpy.shutdown()
-        return
+    # if not ensure_cartesian_compliance_controller(node):
+    #     node.destroy_node()
+    #     rclpy.shutdown()
+    #     return
 
     pose_publisher = node.create_publisher(
         PoseStamped,
