@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 500
+    update_rate: 1000
     ur_arm_controller:
       type: joint_trajectory_controller/JointTrajectoryController
     joint_state_broadcaster:

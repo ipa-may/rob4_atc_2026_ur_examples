@@ -42,10 +42,14 @@ def main() -> None:
     target = PoseStamped()
     # target.header.frame_id = "ur3e_base"
     target.header.frame_id = "ur5e_base"
-    target.pose.position.x = -0.463
-    target.pose.position.y = -0.26
-    target.pose.position.z = 0.379
+    target.pose.position.x = -0.2
+    target.pose.position.y = -0.23
+    target.pose.position.z = 0.8
     target.pose.orientation.w = 1.0
+
+    # x: -0.10986858387784118
+    # y: -0.23419889851047643
+    # z: 0.9620386439617036
 
     node.get_logger().info("Publishing cartesian target frame... and spin")
     target.header.stamp = node.get_clock().now().to_msg()

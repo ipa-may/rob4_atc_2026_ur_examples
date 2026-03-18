@@ -19,15 +19,26 @@ from .controller_utils import load_controller, switch_controller
 #     "ur3e_wrist_3_joint",
 # ]
 
-# Real UR5e
+# Real UR5e and UR3e
+# JOINT_NAMES: list[str] = [
+#     "shoulder_pan_joint",
+#     "shoulder_lift_joint",
+#     "elbow_joint",
+#     "wrist_1_joint",
+#     "wrist_2_joint",
+#     "wrist_3_joint",
+# ]
+
+
 JOINT_NAMES: list[str] = [
-    "shoulder_pan_joint",
-    "shoulder_lift_joint",
-    "elbow_joint",
-    "wrist_1_joint",
-    "wrist_2_joint",
-    "wrist_3_joint",
+    "ur5e_shoulder_pan_joint",
+    "ur5e_shoulder_lift_joint",
+    "ur5e_elbow_joint",
+    "ur5e_wrist_1_joint",
+    "ur5e_wrist_2_joint",
+    "ur5e_wrist_3_joint",
 ]
+
 
 def build_goal() -> FollowJointTrajectory.Goal:
     """Build a sample joint trajectory goal."""
