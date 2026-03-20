@@ -100,10 +100,10 @@ def main() -> None:
     """Run the trajectory sender entrypoint."""
     rclpy.init()
     node = rclpy.create_node("trajectory_sender")
-    # if not ensure_joint_trajectory_controller(node):
-    #     node.destroy_node()
-    #     rclpy.shutdown()
-    #     return
+    if not ensure_joint_trajectory_controller(node):
+        node.destroy_node()
+        rclpy.shutdown()
+        return
     client = ActionClient(
         node,
         FollowJointTrajectory,
