@@ -13,12 +13,12 @@ def main() -> None:
     publisher = node.create_publisher(WrenchStamped, "/cartesian_force_controller/target_wrench", 10)
 
     msg = WrenchStamped()
-    msg.header.frame_id = "ur5e_tool0"
+    msg.header.frame_id = "ur3e_tool0"
     msg.wrench.force.z = -3.0
 
     msg.header.stamp = node.get_clock().now().to_msg()
     publisher.publish(msg)
-    node.get_logger().info("Published one /cartesian_force_controller/target_wrench message with force.z = 2.0")
+    node.get_logger().info("Published one /cartesian_force_controller/target_wrench message with force.z = 3.0")
     rclpy.spin_once(node, timeout_sec=0.1)
 
     node.destroy_node()

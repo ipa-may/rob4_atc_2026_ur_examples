@@ -10,14 +10,14 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 from .controller_utils import load_controller, switch_controller
 
 # Container example ur3e
-# JOINT_NAMES: list[str] = [
-#     "ur3e_shoulder_pan_joint",
-#     "ur3e_shoulder_lift_joint",
-#     "ur3e_elbow_joint",
-#     "ur3e_wrist_1_joint",
-#     "ur3e_wrist_2_joint",
-#     "ur3e_wrist_3_joint",
-# ]
+JOINT_NAMES: list[str] = [
+    "ur3e_shoulder_pan_joint",
+    "ur3e_shoulder_lift_joint",
+    "ur3e_elbow_joint",
+    "ur3e_wrist_1_joint",
+    "ur3e_wrist_2_joint",
+    "ur3e_wrist_3_joint",
+]
 
 # Real UR5e and UR3e
 # JOINT_NAMES: list[str] = [
@@ -30,14 +30,14 @@ from .controller_utils import load_controller, switch_controller
 # ]
 
 
-JOINT_NAMES: list[str] = [
-    "ur5e_shoulder_pan_joint",
-    "ur5e_shoulder_lift_joint",
-    "ur5e_elbow_joint",
-    "ur5e_wrist_1_joint",
-    "ur5e_wrist_2_joint",
-    "ur5e_wrist_3_joint",
-]
+# JOINT_NAMES: list[str] = [
+#     "ur5e_shoulder_pan_joint",
+#     "ur5e_shoulder_lift_joint",
+#     "ur5e_elbow_joint",
+#     "ur5e_wrist_1_joint",
+#     "ur5e_wrist_2_joint",
+#     "ur5e_wrist_3_joint",
+# ]
 
 
 def build_goal() -> FollowJointTrajectory.Goal:
