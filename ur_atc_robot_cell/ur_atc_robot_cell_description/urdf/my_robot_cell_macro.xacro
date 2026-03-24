@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
+  <xacro:include filename="$(find ur_atc_robot_cell_description)/urdf/tool_rack.xacro"/>
+  <xacro:include filename="$(find ur_atc_robot_cell_description)/urdf/gripper_side_TC.xacro" />
 
   <xacro:macro name="my_robot_cell" params="
     parent
@@ -56,6 +58,19 @@
     >
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:ur_robot>
+
+    <xacro:property name="tool_rack_x_dist" value="0.77" />
+    <xacro:property name="tool_rack_y_dist" value="0.23" />
+    <link name="tool_rack_base"/>
+    <joint name="tool_rack_base" type="fixed">
+      <parent link="table" />
+      <child link="tool_rack_base" />
+      <origin xyz="${tool_rack_x_dist} ${tool_rack_y_dist} 0" rpy="0 0 0" />
+    </joint>
+
+    <xacro:tool-rack parent="tool_rack_base"/>
+    <xacro:gripper-tool-change-adaptor parent_link="ratelier_link"/>
+
   </xacro:macro>
 
 </robot>
