@@ -32,11 +32,15 @@ Send a simple cartesian target:
 ros2 run ur3e_ros2_cartesian_control_scripts_examples cartesian_motion_sender_repeating
 ```
 
+Send a set of waypoints to the controller:
+```sh
+ros2 run ur3e_ros2_cartesian_control_scripts_examples cartesian_motion_sender
+``` 
+
 Send a cartesian compliance target (pose + wrench):
 ```
 ros2 run ur3e_ros2_cartesian_control_scripts_examples cartesian_compliance_sender
 ```
-
 
 ## Motion vs compliance controllers
 The two cartesian controllers serve different purposes:

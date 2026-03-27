@@ -32,17 +32,17 @@ colcon build --packages-up-to ur_atc_robot_cell_moveit_config
 colcon build --packages-select ur3e_ros2_control_scripts_examples
 ```
 
-### Cartesian controllers (once)
-Either install binaries:
-```sh
-sudo apt install ros-jazzy-cartesian-controllers ros-jazzy-cartesian-controller-handles
-```
+### Cartesian controllers
 
-Or build from source:
+Clone (once)
 ```sh
+# Inside src/
 git clone -b ros2 https://github.com/fzi-forschungszentrum-informatik/cartesian_controllers.git
 rosdep install --from-paths ./ --ignore-src -y
-cd ..
+```
+
+Build from source:
+```sh
 colcon build --packages-skip cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```
 
