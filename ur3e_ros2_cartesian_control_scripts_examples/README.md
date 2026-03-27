@@ -15,14 +15,21 @@ source install/setup.bash
 If you build cartesian controllers from source, make sure they are in your workspace and rebuild the workspace.
 
 ## Run
-Launch the UR control stack (example with mock hardware):
+Launch the UR control stack:
 ```
+# With mock hardware
 ros2 launch ur_atc_robot_cell_control start_robot.launch.py ur_type:=ur3e use_mock_hardware:=true
+
+# With real robot
+ros2 launch ur_atc_robot_cell_control start_robot.launch.py ur_type:=ur5e robot_ip:=<robot-ip>
 ```
 
+Activate the correct controller
+
+
 Send a simple cartesian target:
-```
-ros2 run ur3e_ros2_cartesian_control_scripts_examples cartesian_motion_sender
+```sh
+ros2 run ur3e_ros2_cartesian_control_scripts_examples cartesian_motion_sender_repeating
 ```
 
 Send a cartesian compliance target (pose + wrench):
@@ -30,10 +37,6 @@ Send a cartesian compliance target (pose + wrench):
 ros2 run ur3e_ros2_cartesian_control_scripts_examples cartesian_compliance_sender
 ```
 
-To activate the controller manually:
-```
-ros2 control set_controller_state cartesian_motion_controller active
-```
 
 ## Motion vs compliance controllers
 The two cartesian controllers serve different purposes:

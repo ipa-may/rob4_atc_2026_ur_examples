@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Publish the same pose target repeatedly to the cartesian motion controller."""
 
+import time
+
 import rclpy
 from geometry_msgs.msg import PoseStamped
 
@@ -26,28 +28,20 @@ def main() -> None:
     # cartesian_motion_controller ignores header.stamp and only checks frame_id and pose.
     publish_rate_hz = 10.0
     publish_duration_sec = 2.0
-    wait_for_subscriber_sec = 2.0
 
     node.get_logger().info("Waiting for cartesian motion controller subscriber...")
-    wait_deadline = node.get_clock().now().nanoseconds + int(wait_for_subscriber_sec * 1e9)
-    while rclpy.ok() and node.get_clock().now().nanoseconds < wait_deadline:
-        if publisher.get_subscription_count() > 0:
-            break
-        rclpy.spin_once(node, timeout_sec=0.1)
-
-    if publisher.get_subscription_count() == 0:
-        node.get_logger().warn(
-            "No subscriber matched /cartesian_motion_controller/target_frame. "
-            "Publishing anyway."
-        )
-
+    
+    
     node.get_logger().info("Publishing cartesian target frame repeatedly...")
-    end_time = node.get_clock().now().nanoseconds + int(publish_duration_sec * 1e9)
-    rate = node.create_rate(publish_rate_hz)
-    while rclpy.ok() and node.get_clock().now().nanoseconds < end_time:
+    node.get_logger().info(
+        f"Publishing for {publish_duration_sec:.1f} s at {publish_rate_hz:.1f} Hz"
+    )
+    end_time_sec = time.monotonic() + publish_duration_sec
+    publish_period_sec = 1.0 / publish_rate_hz
+    while rclpy.ok() and time.monotonic() < end_time_sec:
         publisher.publish(target)
         rclpy.spin_once(node, timeout_sec=0.0)
-        rate.sleep()
+        time.sleep(publish_period_sec)
 
     node.get_logger().info("Stop publishing cartesian target frame.")
     node.destroy_node()
