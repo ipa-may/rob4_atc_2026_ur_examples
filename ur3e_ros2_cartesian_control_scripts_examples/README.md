@@ -6,7 +6,7 @@ Use this as a starting point to investigate basic mechanisms and to setup your o
 ## Build
 
 Build this package:
-```
+```sh
 cd ~/ros2_ws
 colcon build --packages-select ur3e_ros2_cartesian_control_scripts_examples
 source install/setup.bash
@@ -16,7 +16,7 @@ If you build cartesian controllers from source, make sure they are in your works
 
 ## Run
 Launch the UR control stack:
-```
+```sh
 # With mock hardware
 ros2 launch ur_atc_robot_cell_control start_robot.launch.py ur_type:=ur3e use_mock_hardware:=true
 

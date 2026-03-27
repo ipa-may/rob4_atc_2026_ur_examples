@@ -36,13 +36,14 @@ colcon build --packages-select ur3e_ros2_control_scripts_examples
 
 Clone (once)
 ```sh
-# Inside src/
+# From src/
 git clone -b ros2 https://github.com/fzi-forschungszentrum-informatik/cartesian_controllers.git
 rosdep install --from-paths ./ --ignore-src -y
 ```
 
 Build from source:
 ```sh
+# From workspace
 colcon build --packages-skip cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```
 
@@ -59,7 +60,13 @@ source install/setup.bash
 
 ### Launch the workcell
 ```sh
-ros2 launch ur_atc_robot_cell_control start_robot.launch.py use_mock_hardware:=true
+# Mock
+ros2 Mock ur_atc_robot_cell_control start_robot.launch.py use_mock_hardware:=true
+```
+
+```sh
+# Real
+ros2 launch ur_atc_robot_cell_control start_robot.launch.py ur_type:=ur5e robot_ip:=<robot-ip>
 ```
 
 ### Run controllers (separate terminal)
