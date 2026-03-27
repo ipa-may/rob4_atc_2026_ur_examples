@@ -4,8 +4,12 @@
 import rclpy
 from rclpy.duration import Duration
 from geometry_msgs.msg import PoseStamped, WrenchStamped
-from controller_utils import load_controller, switch_controller
 from controller_manager_msgs.srv import SwitchController
+
+try:
+    from .controller_utils import load_controller, switch_controller
+except ImportError:
+    from controller_utils import load_controller, switch_controller
 
 
 # def ensure_cartesian_compliance_controller(node) -> bool:

@@ -3,11 +3,9 @@
 <package format="3">
   <name>ur3e_ros2_cartesian_control_scripts_examples</name>
   <version>0.0.0</version>
-  <description>An easy-to-start configuration for cartesian_controllers on Universal Robots</description>
-  <maintainer email="scherzin@fzi.de">Stefan Scherzinger</maintainer>
+  <description>An easy-to-start configuration for cartesian_controllers</description>
+  <maintainer email="yasmine.makkaoui@ipa.fraunhofer.de">Yasmine Makkaoui</maintainer>
   <license>BSD-3-Clause</license>
-
-  <buildtool_depend>ament_cmake</buildtool_depend>
 
   <exec_depend>hardware_interface</exec_depend>
   <exec_depend>joint_state_broadcaster</exec_depend>
@@ -28,6 +26,6 @@
   <test_depend>ament_lint_auto</test_depend>
 
   <export>
-    <build_type>ament_cmake</build_type>
+    <build_type>ament_python</build_type>
   </export>
 </package>

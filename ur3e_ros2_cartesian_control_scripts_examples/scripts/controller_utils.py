@@ -4,7 +4,7 @@ import rclpy
 from rclpy.duration import Duration
 from rclpy.task import Future
 from rclpy.client import Client
-from controller_manager_msgs.srv import LoadController, SwitchController
+from controller_manager_msgs.srv import ListControllers, LoadController, SwitchController
 
 
 def wait_for_service(node, client: Client, name: str) -> bool:
@@ -70,3 +70,50 @@ def switch_controller(
         node.get_logger().error("Controller switch reported failure")
         return False
     return True
+
+
+def get_controller_state(node, controller_name: str) -> str | None:
+    """Return the current lifecycle state for a controller."""
+    client: Client = node.create_client(
+        ListControllers,
+        "/controller_manager/list_controllers",
+    )
+    if not wait_for_service(node, client, "Controller manager list"):
+        return None
+
+    request: ListControllers.Request = ListControllers.Request()
+    future: Future = client.call_async(request)
+    rclpy.spin_until_future_complete(node, future)
+    result: ListControllers.Response | None = future.result()
+    if result is None:
+        node.get_logger().error("Failed to call list controllers service")
+        return None
+
+    for controller in result.controller:
+        if controller.name == controller_name:
+            return controller.state
+    return None
+
+
+def wait_for_controller_state(
+    node,
+    controller_name: str,
+    expected_state: str,
+    timeout_sec: float = 5.0,
+) -> bool:
+    """Wait until a controller reaches the expected lifecycle state."""
+    deadline = node.get_clock().now().nanoseconds + int(timeout_sec * 1e9)
+    while rclpy.ok() and node.get_clock().now().nanoseconds < deadline:
+        state = get_controller_state(node, controller_name)
+        if state == expected_state:
+            return True
+        rclpy.spin_once(node, timeout_sec=0.1)
+
+    state = get_controller_state(node, controller_name)
+    if state is None:
+        node.get_logger().error(f"Controller '{controller_name}' not found")
+    else:
+        node.get_logger().error(
+            f"Controller '{controller_name}' is '{state}', expected '{expected_state}'"
+        )
+    return False
