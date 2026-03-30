@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
+  <xacro:include filename="$(find ur_atc_robot_cell_description)/urdf/tool_rack.xacro"/>
+  <xacro:include filename="$(find ur_atc_robot_cell_description)/urdf/gripper_side_TC.xacro" />
 
   <xacro:macro name="my_robot_cell" params="
     parent
@@ -21,63 +23,27 @@
     <link name="table">
       <visual>
         <geometry>
-          <mesh filename="package://ur_atc_robot_cell_description/meshes/fzi_table.dae"/>
+          <mesh filename="package://ur_atc_robot_cell_description/meshes/table.dae"/>
         </geometry>
-        <origin rpy="0 0 0" xyz="0.75 0.5 -1"/>
+        <origin rpy="0 0 0" xyz="0.75 0.775 -0.84"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://ur_atc_robot_cell_description/meshes/fzi_table.dae"/>
+          <mesh filename="package://ur_atc_robot_cell_description/meshes/table.dae"/>
         </geometry>
-        <origin rpy="0 0 0" xyz="0.75 0.5 -1"/>
+        <origin rpy="0 0 0" xyz="0.75 0.775 -0.84"/>
       </collision>
     </link>
-
-    <link name="monitor">
-      <visual>
-        <geometry>
-          <mesh filename="package://ur_atc_robot_cell_description/meshes/171005_Motek_Monitor_L.dae"/>
-        </geometry>
-      </visual>
-      <collision>
-        <geometry>
-          <mesh filename="package://ur_atc_robot_cell_description/meshes/171005_Motek_Monitor_L.dae"/>
-        </geometry>
-      </collision>
-    </link>
-    <joint name="base_to_monitor" type="fixed">
-      <parent link="table"/>
-      <child link="monitor"/>
-      <origin xyz="0.2 0.6 0"/>
-    </joint>
 
     <material name="white">
       <color rgba="1 1 1 1"/>
     </material>
 
-    <link name="wall">
-      <visual>
-        <geometry>
-          <mesh filename="package://ur_atc_robot_cell_description/meshes/wall.dae"/>
-        </geometry>
-      </visual>
-      <collision>
-        <geometry>
-          <box size="4.44 0.1 2.5"/>
-        </geometry>
-      </collision>
-    </link>
-    <joint name="base_to_wall" type="fixed">
-      <parent link="table"/>
-      <child link="wall"/>
-      <origin xyz="1.25 1.5 0.5"/>
-    </joint>
-
     <link name="robot_mount"/>
     <joint name="base_to_robot_mount" type="fixed">
       <parent link="table"/>
       <child link="robot_mount"/>
-      <origin xyz="0.845 0.85 0" rpy="0 0 ${pi}" />
+      <origin xyz="0.58 1.25 0" rpy="0 0 ${pi}" />
     </joint>
 
     <!--This will create the specific robot-->
@@ -92,6 +58,19 @@
     >
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:ur_robot>
+
+    <xacro:property name="tool_rack_x_dist" value="0.77" />
+    <xacro:property name="tool_rack_y_dist" value="0.23" />
+    <link name="tool_rack_base"/>
+    <joint name="tool_rack_base" type="fixed">
+      <parent link="table" />
+      <child link="tool_rack_base" />
+      <origin xyz="${tool_rack_x_dist} ${tool_rack_y_dist} 0" rpy="0 0 0" />
+    </joint>
+
+    <xacro:tool-rack parent="tool_rack_base"/>
+    <xacro:gripper-tool-change-adaptor parent_link="ratelier_link"/>
+
   </xacro:macro>
 
 </robot>

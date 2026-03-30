@@ -1,0 +1,245 @@
+<?xml version="1.0" ?>
+<!-- Generated using onshape-to-robot -->
+<!-- Onshape https://cad.onshape.com/documents/d9a2f915b82498c9dd1cfe29/w/23d45ff376e0069ec41ced87/e/24d43fd7a6e0f714875541de -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"> 
+
+    <xacro:macro name="gripper-tool-change-adaptor" params="parent_link">
+        <!-- Link base_link_gripper_base -->
+        <link name="base_link_gripper_base">
+            <inertial>
+            <origin xyz="-0.000565209 -0.0124257 -0.0130321" rpy="0 0 0"/>
+            <mass value="0.532405"/>
+            <inertia ixx="0.0012942" ixy="-5.31599e-07" ixz="1.2521e-05" iyy="0.0013613" iyz="3.95947e-05" izz="0.000260097"/>
+            </inertial>
+            <!-- Part iso_50_flange_schunk_v1 -->
+            <visual>
+            <origin xyz="0 -0.0109987 0.0115755" rpy="1.5708 0 1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/iso_50_flange_schunk_v1.stl"/>
+            </geometry>
+            <material name="iso_50_flange_schunk_v1_material">
+                <color rgba="0.792157 0.819608 0.933333 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="0 -0.0109987 0.0115755" rpy="1.5708 0 1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/iso_50_flange_schunk_v1.stl"/>
+            </geometry>
+            </collision>
+            <!-- Part base_link_gripper_base -->
+            <visual>
+            <origin xyz="0 -0.0109987 -0.0104245" rpy="-1.5708 -0 0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/base_link_gripper_base.stl"/>
+            </geometry>
+            <material name="base_link_gripper_base_material">
+                <color rgba="0.690196 0.690196 0.690196 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="0 -0.0109987 -0.0104245" rpy="-1.5708 -0 0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/base_link_gripper_base.stl"/>
+            </geometry>
+            </collision>
+            <!-- Part adaptor_parts -->
+            <visual>
+            <origin xyz="-0.00125 -0.0109987 0.0360255" rpy="-0 0 -0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts.stl"/>
+            </geometry>
+            <material name="adaptor_parts_material">
+                <color rgba="0.792157 0.819608 0.933333 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="-0.00125 -0.0109987 0.0360255" rpy="-0 0 -0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts.stl"/>
+            </geometry>
+            </collision>
+            <!-- Part adaptor_parts_2 -->
+            <visual>
+            <origin xyz="-0.00125 -0.0109987 0.0115755" rpy="-0 0 1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__2.stl"/>
+            </geometry>
+            <material name="adaptor_parts_2_material">
+                <color rgba="0.792157 0.819608 0.933333 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="-0.00125 -0.0109987 0.0115755" rpy="-0 0 1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__2.stl"/>
+            </geometry>
+            </collision>
+            <!-- Part adaptor_parts_3 -->
+            <visual>
+            <origin xyz="-0.00125 -0.0109987 0.0298255" rpy="-3.14159 0 1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__3.stl"/>
+            </geometry>
+            <material name="adaptor_parts_3_material">
+                <color rgba="0.792157 0.819608 0.933333 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="-0.00125 -0.0109987 0.0298255" rpy="-3.14159 0 1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__3.stl"/>
+            </geometry>
+            </collision>
+            <!-- Part adaptor_parts_4 -->
+            <visual>
+            <origin xyz="-0.00125 -0.0109987 0.0318255" rpy="-3.14159 0 1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__4.stl"/>
+            </geometry>
+            <material name="adaptor_parts_4_material">
+                <color rgba="0.792157 0.819608 0.933333 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="-0.00125 -0.0109987 0.0318255" rpy="-3.14159 0 1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__4.stl"/>
+            </geometry>
+            </collision>
+            <!-- Part base_link -->
+            <visual>
+            <origin xyz="-0.00125 -0.0109987 0.0522255" rpy="3.14159 -0 -1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/base_link.stl"/>
+            </geometry>
+            <material name="base_link_material">
+                <color rgba="0.792157 0.819608 0.933333 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="-0.00125 -0.0109987 0.0522255" rpy="3.14159 -0 -1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/base_link.stl"/>
+            </geometry>
+            </collision>
+            <!-- Part adaptor_parts_5 -->
+            <visual>
+            <origin xyz="-0.00525 0.0112012 0.0115755" rpy="-0 -0 -1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__5.stl"/>
+            </geometry>
+            <material name="adaptor_parts_5_material">
+                <color rgba="0.792157 0.819608 0.933333 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="-0.00525 0.0112012 0.0115755" rpy="-0 -0 -1.5708"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__5.stl"/>
+            </geometry>
+            </collision>
+        </link>
+        <!-- Link gripper_with_finger -->
+        <link name="gripper_with_finger">
+            <inertial>
+            <origin xyz="0.0177596 -0.0072897 0.0123518" rpy="0 0 0"/>
+            <mass value="0.0197329"/>
+            <inertia ixx="4.70736e-06" ixy="7.7105e-07" ixz="-2.60097e-06" iyy="9.47821e-06" iyz="5.6073e-07" izz="5.98183e-06"/>
+            </inertial>
+            <!-- Part schunk_5522661_finger_egp_64 -->
+            <visual>
+            <origin xyz="0.02615 -0.0096 0.027" rpy="-1.5708 -1.5708 0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/schunk_5522661_finger_egp_64.stl"/>
+            </geometry>
+            <material name="schunk_5522661_finger_egp_64_material">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="0.02615 -0.0096 0.027" rpy="-1.5708 -1.5708 0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/schunk_5522661_finger_egp_64.stl"/>
+            </geometry>
+            </collision>
+            <!-- Part finger -->
+            <visual>
+            <origin xyz="0.02615 -0.0096 0.027" rpy="-1.5708 -1.5708 0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/finger.stl"/>
+            </geometry>
+            <material name="finger_material">
+                <color rgba="0.647059 0.647059 0.647059 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="0.02615 -0.0096 0.027" rpy="-1.5708 -1.5708 0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/finger.stl"/>
+            </geometry>
+            </collision>
+        </link>
+        <!-- Joint from base_link_gripper_base to gripper_with_finger -->
+        <joint name="Slider1" type="prismatic">
+            <origin xyz="0.025 -0.00149875 -0.114875" rpy="-0 1.5708 0"/>
+            <parent link="base_link_gripper_base"/>
+            <child link="gripper_with_finger"/>
+            <axis xyz="0 0 1"/>
+            <limit effort="10" velocity="10" lower="-0.038" upper="0"/>
+        </joint>
+        <!-- Link gripper_with_finger_2 -->
+        <link name="gripper_with_finger_2">
+            <inertial>
+            <origin xyz="-0.0177596 0.0072897 0.0123518" rpy="0 0 0"/>
+            <mass value="0.0197329"/>
+            <inertia ixx="4.70736e-06" ixy="7.7105e-07" ixz="2.60097e-06" iyy="9.47821e-06" iyz="-5.6073e-07" izz="5.98183e-06"/>
+            </inertial>
+            <!-- Part schunk_5522661_finger_egp_64_2 -->
+            <visual>
+            <origin xyz="-0.02615 0.0096 0.027" rpy="1.5708 -1.5708 0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/schunk_5522661_finger_egp_64.stl"/>
+            </geometry>
+            <material name="schunk_5522661_finger_egp_64_2_material">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="-0.02615 0.0096 0.027" rpy="1.5708 -1.5708 0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/schunk_5522661_finger_egp_64.stl"/>
+            </geometry>
+            </collision>
+            <!-- Part finger_2 -->
+            <visual>
+            <origin xyz="-0.02615 0.0096 0.027" rpy="1.5708 -1.5708 0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/finger.stl"/>
+            </geometry>
+            <material name="finger_2_material">
+                <color rgba="0.647059 0.647059 0.647059 1"/>
+            </material>
+            </visual>
+            <collision>
+            <origin xyz="-0.02615 0.0096 0.027" rpy="1.5708 -1.5708 0"/>
+            <geometry>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/finger.stl"/>
+            </geometry>
+            </collision>
+        </link>
+        <!-- Joint from base_link_gripper_base to gripper_with_finger_2 -->
+        <joint name="Slider2" type="prismatic">
+            <origin xyz="-0.025 -0.0219988 -0.114875" rpy="-0 -1.5708 0"/>
+            <parent link="base_link_gripper_base"/>
+            <child link="gripper_with_finger_2"/>
+            <axis xyz="0 0 1"/>
+            <limit effort="10" velocity="10" lower="-0.038" upper="0"/>
+        </joint>
+        <joint name="gripper_tool_changer_adaptor_joint" type="fixed">
+            <parent link="${parent_link}"/>
+            <child link="base_link_gripper_base"/>
+            <origin xyz="0.035 0 0" rpy="0 0 0"/>
+        </joint>
+    </xacro:macro>
+</robot>

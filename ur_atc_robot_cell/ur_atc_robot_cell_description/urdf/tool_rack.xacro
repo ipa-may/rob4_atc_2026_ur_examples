@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="tool-rack" params="parent">
+
+        <material name="blue">
+            <color rgba="0 0 1 1" />
+        </material>
+
+        <material name="red">
+            <color rgba="1 0 0 1" />
+        </material>
+
+        <material name="green">
+            <color rgba="0 1 0 1" />
+        </material>
+
+
+        <!-- <link name="${parent}" /> -->
+
+        <!-- Variables Definition -->
+
+        <!-- ATTENTION la suite est en mètre A CHANGER -->
+        <xacro:property name="H" value="0.35" /> <!-- Height -->
+        <xacro:property name="W" value="0.7" /> <!-- Width -->
+        <xacro:property name="C" value="0.045" /> <!-- Cube -->
+        <xacro:property name="D1" value="0.15" /> <!-- Depth on the ground -->
+        <xacro:property name="D2" value="0.2" /> <!-- Depth in the air -->
+
+
+
+        <!-- Links Definition -->
+
+        <link name="ground_link">
+            <visual>
+                <origin xyz="0 0 ${C/2}" rpy="0 0 0" />
+                <geometry>
+                    <box size="${D1} ${C} ${C}" />
+                </geometry>
+                <material name="blue" />
+            </visual>
+        </link>
+
+        <link name="ground2_link">
+            <visual>
+                <origin xyz="0 ${W} ${C/2}" rpy="0 0 0" />
+                <geometry>
+                    <box size="${D1} ${C} ${C}" />
+                </geometry>
+                <material name="blue" />
+            </visual>
+        </link>
+
+
+        <link name="vertical_link">
+            <visual>
+                <origin xyz="0 0 ${H/2}" rpy="0 0 0" />
+                <geometry>
+                    <box size="${C} ${C} ${H}" />
+                </geometry>
+                <material name="green" />
+            </visual>
+        </link>
+
+        <link name="vertical2_link">
+            <visual>
+                <origin xyz="0 ${W} ${H/2}" rpy="0 0 0" />
+                <geometry>
+                    <box size="${C} ${C} ${H}" />
+                </geometry>
+                <material name="green" />
+            </visual>
+        </link>
+
+        <link name="horizontal_link">
+            <visual>
+                <origin xyz="0 ${W/2} ${H}" rpy="0 0 0" />
+                <geometry>
+                    <box size="${C} ${W} ${C}" />
+                </geometry>
+                <material name="red" />
+            </visual>
+        </link>
+
+        <link name="air_link">
+            <visual>
+                <origin xyz="${D2/2} ${W/3} ${H}" rpy="0 0 0" />
+                <geometry>
+                    <box size="${D2} ${C} ${C}" />
+                </geometry>
+                <material name="blue" />
+            </visual>
+        </link>
+
+        <link name="ratelier_link"/>
+
+
+
+
+        <!-- Joints Definition -->
+
+        <joint name="fixed_ground_link" type="fixed">
+            <parent link="${parent}" />
+            <child link="ground_link" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </joint>
+
+        <joint name="fixed_ground2_link" type="fixed">
+            <parent link="${parent}" />
+            <child link="ground2_link" />
+            <origin xyz="0 ${C} 0" rpy="0 0 0" />
+        </joint>
+
+        <joint name="fixed_vertical_link" type="fixed">
+            <parent link="${parent}" />
+            <child link="vertical_link" />
+            <origin xyz="0 0 ${C}" rpy="0 0 0" />
+        </joint>
+
+        <joint name="fixed_vertical2_link" type="fixed">
+            <parent link="${parent}" />
+            <child link="vertical2_link" />
+            <origin xyz="0 ${C} ${C}" rpy="0 0 0" />
+        </joint>
+
+        <joint name="fixed_horizontal_link" type="fixed">
+            <parent link="${parent}" />
+            <child link="horizontal_link" />
+            <origin xyz="0 ${C/2} ${C/2}" rpy="0 0 0" />
+        </joint>
+
+        <joint name="fixed_air_link" type="fixed">
+            <parent link="${parent}" />
+            <child link="air_link" />
+            <origin xyz="${C/2} 0 ${C/2}" rpy="0 0 0" />
+        </joint>
+
+        <joint name="fixed_ratelier_link" type="fixed">
+            <parent link="${parent}" />
+            <child link="ratelier_link" />
+            <origin xyz="${D2} ${W/3} ${H+C}" rpy="0 0 0" />
+        </joint>
+    </xacro:macro>
+    
+
+
+</robot>
