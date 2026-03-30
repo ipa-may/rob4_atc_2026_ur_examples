@@ -4,7 +4,7 @@ This workspace contains a UR workcell setup, controller examples, and optional C
 ## What is included
 ### Workcell example
 <figure style="text-align: center;">
-    <img src="./doc/rviz_ur.PNG" alt="UR workcell" width="600">
+    <img src="./doc/rviz_view.png" alt="UR workcell" width="600">
     <figcaption>UR workcell</figcaption>
 </figure>
 
