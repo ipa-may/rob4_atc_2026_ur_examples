@@ -15,7 +15,7 @@
             <visual>
             <origin xyz="0 -0.0109987 0.0115755" rpy="1.5708 0 1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/iso_50_flange_schunk_v1.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/iso_50_flange_schunk_v1.stl"/>
             </geometry>
             <material name="iso_50_flange_schunk_v1_material">
                 <color rgba="0.792157 0.819608 0.933333 1"/>
@@ -24,14 +24,14 @@
             <collision>
             <origin xyz="0 -0.0109987 0.0115755" rpy="1.5708 0 1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/iso_50_flange_schunk_v1.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/iso_50_flange_schunk_v1.stl"/>
             </geometry>
             </collision>
             <!-- Part base_link_gripper_base -->
             <visual>
             <origin xyz="0 -0.0109987 -0.0104245" rpy="-1.5708 -0 0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/base_link_gripper_base.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/base_link_gripper_base.stl"/>
             </geometry>
             <material name="base_link_gripper_base_material">
                 <color rgba="0.690196 0.690196 0.690196 1"/>
@@ -40,14 +40,14 @@
             <collision>
             <origin xyz="0 -0.0109987 -0.0104245" rpy="-1.5708 -0 0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/base_link_gripper_base.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/base_link_gripper_base.stl"/>
             </geometry>
             </collision>
             <!-- Part adaptor_parts -->
             <visual>
             <origin xyz="-0.00125 -0.0109987 0.0360255" rpy="-0 0 -0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/adaptor_parts.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts.stl"/>
             </geometry>
             <material name="adaptor_parts_material">
                 <color rgba="0.792157 0.819608 0.933333 1"/>
@@ -56,14 +56,14 @@
             <collision>
             <origin xyz="-0.00125 -0.0109987 0.0360255" rpy="-0 0 -0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/adaptor_parts.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts.stl"/>
             </geometry>
             </collision>
             <!-- Part adaptor_parts_2 -->
             <visual>
             <origin xyz="-0.00125 -0.0109987 0.0115755" rpy="-0 0 1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/adaptor_parts__2.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__2.stl"/>
             </geometry>
             <material name="adaptor_parts_2_material">
                 <color rgba="0.792157 0.819608 0.933333 1"/>
@@ -72,14 +72,14 @@
             <collision>
             <origin xyz="-0.00125 -0.0109987 0.0115755" rpy="-0 0 1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/adaptor_parts__2.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__2.stl"/>
             </geometry>
             </collision>
             <!-- Part adaptor_parts_3 -->
             <visual>
             <origin xyz="-0.00125 -0.0109987 0.0298255" rpy="-3.14159 0 1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/adaptor_parts__3.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__3.stl"/>
             </geometry>
             <material name="adaptor_parts_3_material">
                 <color rgba="0.792157 0.819608 0.933333 1"/>
@@ -88,14 +88,14 @@
             <collision>
             <origin xyz="-0.00125 -0.0109987 0.0298255" rpy="-3.14159 0 1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/adaptor_parts__3.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__3.stl"/>
             </geometry>
             </collision>
             <!-- Part adaptor_parts_4 -->
             <visual>
             <origin xyz="-0.00125 -0.0109987 0.0318255" rpy="-3.14159 0 1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/adaptor_parts__4.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__4.stl"/>
             </geometry>
             <material name="adaptor_parts_4_material">
                 <color rgba="0.792157 0.819608 0.933333 1"/>
@@ -104,14 +104,14 @@
             <collision>
             <origin xyz="-0.00125 -0.0109987 0.0318255" rpy="-3.14159 0 1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/adaptor_parts__4.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__4.stl"/>
             </geometry>
             </collision>
             <!-- Part base_link -->
             <visual>
             <origin xyz="-0.00125 -0.0109987 0.0522255" rpy="3.14159 -0 -1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/base_link.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/base_link.stl"/>
             </geometry>
             <material name="base_link_material">
                 <color rgba="0.792157 0.819608 0.933333 1"/>
@@ -120,14 +120,14 @@
             <collision>
             <origin xyz="-0.00125 -0.0109987 0.0522255" rpy="3.14159 -0 -1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/base_link.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/base_link.stl"/>
             </geometry>
             </collision>
             <!-- Part adaptor_parts_5 -->
             <visual>
             <origin xyz="-0.00525 0.0112012 0.0115755" rpy="-0 -0 -1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/adaptor_parts__5.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__5.stl"/>
             </geometry>
             <material name="adaptor_parts_5_material">
                 <color rgba="0.792157 0.819608 0.933333 1"/>
@@ -136,7 +136,7 @@
             <collision>
             <origin xyz="-0.00525 0.0112012 0.0115755" rpy="-0 -0 -1.5708"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/adaptor_parts__5.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/adaptor_parts__5.stl"/>
             </geometry>
             </collision>
         </link>
@@ -151,7 +151,7 @@
             <visual>
             <origin xyz="0.02615 -0.0096 0.027" rpy="-1.5708 -1.5708 0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/schunk_5522661_finger_egp_64.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/schunk_5522661_finger_egp_64.stl"/>
             </geometry>
             <material name="schunk_5522661_finger_egp_64_material">
                 <color rgba="0.2 0.2 0.2 1"/>
@@ -160,14 +160,14 @@
             <collision>
             <origin xyz="0.02615 -0.0096 0.027" rpy="-1.5708 -1.5708 0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/schunk_5522661_finger_egp_64.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/schunk_5522661_finger_egp_64.stl"/>
             </geometry>
             </collision>
             <!-- Part finger -->
             <visual>
             <origin xyz="0.02615 -0.0096 0.027" rpy="-1.5708 -1.5708 0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/finger.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/finger.stl"/>
             </geometry>
             <material name="finger_material">
                 <color rgba="0.647059 0.647059 0.647059 1"/>
@@ -176,7 +176,7 @@
             <collision>
             <origin xyz="0.02615 -0.0096 0.027" rpy="-1.5708 -1.5708 0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/finger.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/finger.stl"/>
             </geometry>
             </collision>
         </link>
@@ -199,7 +199,7 @@
             <visual>
             <origin xyz="-0.02615 0.0096 0.027" rpy="1.5708 -1.5708 0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/schunk_5522661_finger_egp_64.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/schunk_5522661_finger_egp_64.stl"/>
             </geometry>
             <material name="schunk_5522661_finger_egp_64_2_material">
                 <color rgba="0.2 0.2 0.2 1"/>
@@ -208,14 +208,14 @@
             <collision>
             <origin xyz="-0.02615 0.0096 0.027" rpy="1.5708 -1.5708 0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/schunk_5522661_finger_egp_64.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/schunk_5522661_finger_egp_64.stl"/>
             </geometry>
             </collision>
             <!-- Part finger_2 -->
             <visual>
             <origin xyz="-0.02615 0.0096 0.027" rpy="1.5708 -1.5708 0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/finger.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/finger.stl"/>
             </geometry>
             <material name="finger_2_material">
                 <color rgba="0.647059 0.647059 0.647059 1"/>
@@ -224,7 +224,7 @@
             <collision>
             <origin xyz="-0.02615 0.0096 0.027" rpy="1.5708 -1.5708 0"/>
             <geometry>
-                <mesh filename="package://igus_robot_cell/meshes/finger.stl"/>
+                <mesh filename="package://ur_atc_robot_cell_description/meshes/finger.stl"/>
             </geometry>
             </collision>
         </link>
