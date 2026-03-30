@@ -24,23 +24,41 @@ ros2 launch ur_atc_robot_cell_control start_robot.launch.py ur_type:=ur3e use_mo
 ros2 launch ur_atc_robot_cell_control start_robot.launch.py ur_type:=ur5e robot_ip:=<robot-ip>
 ```
 
-Activate the correct controller
+Then use one of the example senders.
 
-
-Send a simple cartesian target:
+Send a simple cartesian target repeatedly:
 ```sh
 ros2 run ur3e_ros2_cartesian_control_scripts_examples cartesian_motion_sender_repeating
 ```
 
-Send a set of waypoints to the controller:
+Send two fixed cartesian waypoints to the controller:
 ```sh
 ros2 run ur3e_ros2_cartesian_control_scripts_examples cartesian_motion_sender
 ``` 
 
-Send a cartesian compliance target (pose + wrench):
+Run it with the default frames:
+```sh
+ros2 run ur3e_ros2_cartesian_control_scripts_examples cartesian_motion_sender_from_tf
 ```
+
+Or provide explicit frames, parent: ur3e_base, frame: pose_1:
+```sh
+ros2 run ur3e_ros2_cartesian_control_scripts_examples cartesian_motion_sender_from_tf ur3e_base pose_1 --wait-for-ready
+```
+
+Send a cartesian compliance target (pose + wrench):
+```sh
 ros2 run ur3e_ros2_cartesian_control_scripts_examples cartesian_compliance_sender
 ```
+
+## Python library
+`CartesianMotionSender` is available as a reusable Python class in this package.
+
+Import it in your own script:
+```python
+from ur3e_ros2_cartesian_control_scripts_examples import CartesianMotionSender
+```
+
 
 ## Motion vs compliance controllers
 The two cartesian controllers serve different purposes:

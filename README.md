@@ -61,7 +61,7 @@ source install/setup.bash
 ### Launch the workcell
 ```sh
 # Mock
-ros2 Mock ur_atc_robot_cell_control start_robot.launch.py use_mock_hardware:=true
+ros2 Mock ur_atc_robot_cell_control start_robot.launch.py  ur_type:=ur5e use_mock_hardware:=true
 ```
 
 ```sh

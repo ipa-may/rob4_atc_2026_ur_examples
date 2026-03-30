@@ -28,6 +28,7 @@ setup(
     entry_points={
         "console_scripts": [
             "cartesian_motion_sender = ur3e_ros2_cartesian_control_scripts_examples.cartesian_motion_sender:main",
+            "cartesian_motion_sender_from_tf = ur3e_ros2_cartesian_control_scripts_examples.cartesian_motion_sender_from_tf:main",
             "cartesian_motion_sender_repeating = ur3e_ros2_cartesian_control_scripts_examples.cartesian_motion_sender_repeating:main",
             "cartesian_compliance_sender = ur3e_ros2_cartesian_control_scripts_examples.cartesian_compliance_sender:main",
             "cartesian_servo = ur3e_ros2_cartesian_control_scripts_examples.cartesian_servo:main",

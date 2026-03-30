@@ -25,10 +25,10 @@ colcon build \
     --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 echo "Building ur3e_ros2_cartesian_control_scripts_examples..."
-colcon build --packages-select ur3e_ros2_cartesian_control_scripts_examples
+colcon build --symlink-install --packages-select ur3e_ros2_cartesian_control_scripts_examples
 
 echo "Building ur3e_ros2_control_scripts_examples..."
-colcon build --packages-select ur3e_ros2_control_scripts_examples
+colcon build --symlink-install --packages-select ur3e_ros2_control_scripts_examples
 
 if [[ -f "${workspace_root}/install/setup.bash" ]]; then
     # shellcheck disable=SC1090
