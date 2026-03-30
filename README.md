@@ -1,5 +1,6 @@
 # Universal Robots ROS 2 Cell Tutorial
 This workspace contains a UR workcell setup, controller examples, and optional Cartesian control scripts.
+WIP: Student playground
 
 ## What is included
 ### Workcell example
