@@ -52,7 +52,7 @@ def build_goal() -> FollowJointTrajectory.Goal:
         ),
         JointTrajectoryPoint(
             positions=[0.0, -1.57, 0.0, 0.0, 0.0, 0.0],
-            # positions=[0.2, -1.6, 1.5, 0.2, -0.5, 0.0],
+            #positions=[0.2, -1.6, 1.5, 0.2, -0.5, 0.0],
             time_from_start=Duration(seconds=4).to_msg(),
         ),
     ]

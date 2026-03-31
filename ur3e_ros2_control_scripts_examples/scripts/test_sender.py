@@ -42,21 +42,16 @@ JOINT_NAMES: list[str] = [
 # ]
 
 
-def build_goal() -> FollowJointTrajectory.Goal:
+def build_goal(pan,lift,elbow,w1,w2,w3) -> FollowJointTrajectory.Goal:
     """Build a sample joint trajectory goal."""
     goal: FollowJointTrajectory.Goal = FollowJointTrajectory.Goal()
     goal.trajectory.joint_names = JOINT_NAMES
     goal.trajectory.points = [
         JointTrajectoryPoint(
-            positions=[0.785, -1.57, 0.785, 0.785, 0.785, 0.785],
-            # positions=[0.0, -1.6, 2.0, 0.0, 0.2, 0.0],
+            positions=[pan, lift, elbow, w1, w2, w3],
             time_from_start=Duration(seconds=2).to_msg(),
         ),
-        JointTrajectoryPoint(
-            positions=[0.0, -1.57, 0.0, 0.0, 0.0, 0.0],
-            # positions=[0.2, -1.6, 1.5, 0.2, -0.5, 0.0],
-            time_from_start=Duration(seconds=4).to_msg(),
-        ),
+
     ]
     return goal
 
@@ -116,28 +111,31 @@ def main() -> None:
     client.wait_for_server()
     node.get_logger().info("Server available, sending goal")
 
-    goal: FollowJointTrajectory.Goal = build_goal()
-    node.get_logger().info(f"Goal: {goal.trajectory.points[0].positions[0]}")
+    while(1):
+        print("choississez less coordonnées pour: pan,lift,elbow,w1,w2,w3")
+        pan,lift,elbow,w1,w2,w3 = map(float, input().split())
+        goal: FollowJointTrajectory.Goal = build_goal(pan,lift,elbow,w1,w2,w3)
+        node.get_logger().info(f"Goal: {goal.trajectory.points[0].positions[0]}")
 
-    send_future = client.send_goal_async(goal)
-    rclpy.spin_until_future_complete(node, send_future)
-    goal_handle = send_future.result()
+        send_future = client.send_goal_async(goal)
+        rclpy.spin_until_future_complete(node, send_future)
+        goal_handle = send_future.result()
 
-    if goal_handle is None or not goal_handle.accepted:
-        node.get_logger().error("Goal rejected by server")
-        node.destroy_node()
-        rclpy.shutdown()
-        return
+        if goal_handle is None or not goal_handle.accepted:
+            node.get_logger().error("Goal rejected by server")
+            node.destroy_node()
+            rclpy.shutdown()
+            return
 
-    node.get_logger().info("Goal accepted, waiting for result...")
-    result_future = goal_handle.get_result_async()
-    rclpy.spin_until_future_complete(node, result_future)
-    result = result_future.result()
+        node.get_logger().info("Goal accepted, waiting for result...")
+        result_future = goal_handle.get_result_async()
+        rclpy.spin_until_future_complete(node, result_future)
+        result = result_future.result()
 
-    if result is None:
-        node.get_logger().error("Goal result unavailable")
-    else:
-        node.get_logger().info(f"Result: {result.result.error_code}")
+        if result is None:
+            node.get_logger().error("Goal result unavailable")
+        else:
+            node.get_logger().info(f"Result: {result.result.error_code}")
 
     node.destroy_node()
     rclpy.shutdown()
