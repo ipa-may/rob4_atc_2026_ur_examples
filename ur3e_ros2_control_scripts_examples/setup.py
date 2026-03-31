@@ -11,6 +11,8 @@ setup(
         'scripts/controller_utils.py',
         'scripts/trajectory_sender.py',
         'scripts/forward_velocity_sender.py',
+        'scripts/test_sender.py',
+
     ],
     data_files=[
         ('share/' + package_name, ['package.xml']),
@@ -26,6 +28,7 @@ setup(
         'console_scripts': [
             'send_trajectory = ur3e_ros2_control_scripts_examples.trajectory_sender:main',
             'send_velocity = ur3e_ros2_control_scripts_examples.forward_velocity_sender:main',
+            'send_test = ur3e_ros2_control_scripts_examples.test_sender:main',
         ],
     },
 )
