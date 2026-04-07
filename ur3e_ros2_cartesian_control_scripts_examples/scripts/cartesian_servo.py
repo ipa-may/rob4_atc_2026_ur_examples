@@ -29,18 +29,30 @@ class CartesianServo:
         self.tf_listener: TransformListener = TransformListener(
             self.tf_buffer, self.node
         )
-
+        # ur3e default parameters
         self.step_size: float = 0.005
         self.base_frame: str = (
-            self.node.declare_parameter("base_frame", "ur5e_base")
+            self.node.declare_parameter("base_frame", "ur3e_base")
             .get_parameter_value()
             .string_value
         )
         self.tool_frame: str = (
-            self.node.declare_parameter("tool_frame", "ur5e_tool0")
+            self.node.declare_parameter("tool_frame", "ur3e_tool0")
             .get_parameter_value()
             .string_value
         )
+        # ur5e default parameters
+        # self.step_size: float = 0.005
+        # self.base_frame: str = (
+        #     self.node.declare_parameter("base_frame", "ur5e_base")
+        #     .get_parameter_value()
+        #     .string_value
+        # )
+        # self.tool_frame: str = (
+        #     self.node.declare_parameter("tool_frame", "ur5e_tool0")
+        #     .get_parameter_value()
+        #     .string_value
+        # )
         self.key_x_positive: str = self._declare_key_parameter("key_x_positive", "q")
         self.key_x_negative: str = self._declare_key_parameter("key_x_negative", "a")
         self.key_y_positive: str = self._declare_key_parameter("key_y_positive", "w")
