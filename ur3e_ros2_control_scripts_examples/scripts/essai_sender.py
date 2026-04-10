@@ -4,6 +4,7 @@
 """Send a small two-point joint trajectory to the UR scaled trajectory controller."""
 
 from math import pi
+convert =  "%.2f" % (pi/180) 
 
 import rclpy
 from rclpy.action import ActionClient
@@ -67,27 +68,28 @@ def build_goal() -> FollowJointTrajectory.Goal:
     goal.trajectory.joint_names = JOINT_NAMES
     goal.trajectory.points = [
         JointTrajectoryPoint(
-            positions=[9.83 *2*pi/360, -107.29 *2*pi/360, 101.85 *2*pi/360, -84.57 *2*pi/360, -90.19 *2*pi/360, 235.06 *2*pi/360],
+            # Essayer de multiplier au début du tableau (conseil de Aline)
+            positions=[9.83 *convert, -107.29 *convert, 101.85 *convert, -84.57 *convert, -90.19 *convert, 235.06 *convert],
             time_from_start=Duration(seconds=2).to_msg(),
         ),
         JointTrajectoryPoint(
-            positions=[31.84 *2*pi/360, -85.75 *2*pi/360, 83.04 *2*pi/360, -87.16 *2*pi/360, -90.11 *2*pi/360, 257.08 *2*pi/360],
+            positions=[31.84 *convert, -85.75 *convert, 83.04 *convert, -87.16 *convert, -90.11 *convert, 257.08 *convert],
             time_from_start=Duration(seconds=2).to_msg(),
         ),
         JointTrajectoryPoint(
-            positions=[50.86 *2*pi/360, -100.90 *2*pi/360, 97.16 *2*pi/360, -86.05 *2*pi/360, -90.03 *2*pi/360, 276.10 *2*pi/360],
+            positions=[50.86 *convert, -100.90 *convert, 97.16 *convert, -86.05 *convert, -90.03 *convert, 276.10 *convert],
             time_from_start=Duration(seconds=2).to_msg(),
         ),
         JointTrajectoryPoint(
-            positions=[40.25 *2*pi/360, -114.49 *2*pi/360, 121.95 *2*pi/360, -124.59 *2*pi/360, -61.68 *2*pi/360, 275.53 *2*pi/360],
+            positions=[40.25 *convert, -114.49 *convert, 121.95 *convert, -124.59 *convert, -61.68 *convert, 275.53 *convert],
             time_from_start=Duration(seconds=2).to_msg(),
         ),   
         JointTrajectoryPoint(
-            positions=[47.64 *2*pi/360, -99.73 *2*pi/360, 96.24 *2*pi/360, -86.31 *2*pi/360, -90.04 *2*pi/360, 272.88 *2*pi/360],
+            positions=[47.64 *convert, -99.73 *convert, 96.24 *convert, -86.31 *convert, -90.04 *convert, 272.88 *convert],
             time_from_start=Duration(seconds=2).to_msg(),
         ),
            JointTrajectoryPoint(
-            positions=[31.84 *2*pi/360, -85.75 *2*pi/360, 83.04 *2*pi/360, -87.16 *2*pi/360, -90.11 *2*pi/360, 257.08 *2*pi/360],
+            positions=[31.84 *convert, -85.75 *convert, 83.04 *convert, -87.16 *convert, -90.11 *convert, 257.08 *convert],
             time_from_start=Duration(seconds=2).to_msg(),
         ),
     ]
