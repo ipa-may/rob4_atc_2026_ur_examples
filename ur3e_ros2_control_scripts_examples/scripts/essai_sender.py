@@ -3,9 +3,6 @@
 #!/usr/bin/env python3
 """Send a small two-point joint trajectory to the UR scaled trajectory controller."""
 
-from math import pi
-convert =  "%.2f" % (pi/180) 
-
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.duration import Duration
@@ -44,23 +41,6 @@ JOINT_NAMES: list[str] = [
 #     "ur5e_wrist_3_joint",
 # ]
 
-# def build_goal(pan,lift,elbow,w1,w2,w3) -> FollowJointTrajectory.Goal:
-#     """Build a sample joint trajectory goal."""
-#     goal: FollowJointTrajectory.Goal = FollowJointTrajectory.Goal()
-#     goal.trajectory.joint_names = JOINT_NAMES
-#     goal.trajectory.points = [
-#         JointTrajectoryPoint(
-#             positions=[pan, lift, elbow, w1, w2, w3],
-#             time_from_start=Duration(seconds=2).to_msg(),
-#         ),
-
-#     ]
-#     return goal
-
-# positions=[45 *2*pi/360, -1.57, 0.785, 0.785, 0.785, 0.785],
-    # waypoint1 = [45 *2*pi/360, -1.57, 0.785, 0.785, 0.785, 0.785]
-    # waypoint2 = [0, -1.57, 0, 0, 0, 0]
-
 
 def build_goal() -> FollowJointTrajectory.Goal:
     """Build a sample joint trajectory goal."""
@@ -68,30 +48,29 @@ def build_goal() -> FollowJointTrajectory.Goal:
     goal.trajectory.joint_names = JOINT_NAMES
     goal.trajectory.points = [
         JointTrajectoryPoint(
-            # Essayer de multiplier au début du tableau (conseil de Aline)
-            positions=[9.83 *convert, -107.29 *convert, 101.85 *convert, -84.57 *convert, -90.19 *convert, 235.06 *convert],
+            positions=[0.15, -1.86, 1.7, -1.4, -1.57, 4.1],
             time_from_start=Duration(seconds=2).to_msg(),
         ),
         JointTrajectoryPoint(
-            positions=[31.84 *convert, -85.75 *convert, 83.04 *convert, -87.16 *convert, -90.11 *convert, 257.08 *convert],
+            positions=[0.5, -1.48, -1.44, -1.5, -1.57, -4.48],
+            time_from_start=Duration(seconds=2).to_msg(),
+        ),
+        '''JointTrajectoryPoint(
+            positions=[0.87, -1.74, 1.69, -1.5, -1.57, 4.8],
             time_from_start=Duration(seconds=2).to_msg(),
         ),
         JointTrajectoryPoint(
-            positions=[50.86 *convert, -100.90 *convert, 97.16 *convert, -86.05 *convert, -90.03 *convert, 276.10 *convert],
-            time_from_start=Duration(seconds=2).to_msg(),
-        ),
-        JointTrajectoryPoint(
-            positions=[40.25 *convert, -114.49 *convert, 121.95 *convert, -124.59 *convert, -61.68 *convert, 275.53 *convert],
+            positions=[0.69, -1.98, 2.11, -2.1, -1, 4.7 ],
             time_from_start=Duration(seconds=2).to_msg(),
         ),   
         JointTrajectoryPoint(
-            positions=[47.64 *convert, -99.73 *convert, 96.24 *convert, -86.31 *convert, -90.04 *convert, 272.88 *convert],
+            positions=[0.82, -1.7, 1.67, -1.5, -1.57, 4.7],
             time_from_start=Duration(seconds=2).to_msg(),
         ),
            JointTrajectoryPoint(
-            positions=[31.84 *convert, -85.75 *convert, 83.04 *convert, -87.16 *convert, -90.11 *convert, 257.08 *convert],
+            positions=[30.54, -1.5, 1.4, -1.6, -1.57, 4.48],
             time_from_start=Duration(seconds=2).to_msg(),
-        ),
+        ),'''
     ]
     return goal
 
@@ -151,31 +130,28 @@ def main() -> None:
     client.wait_for_server()
     node.get_logger().info("Server available, sending goal")
 
+    goal: FollowJointTrajectory.Goal = build_goal()
+    node.get_logger().info(f"Goal: {goal.trajectory.points[0].positions[0]}")
 
-    while(1):
-        print("Lancement de la boucle")
-        goal: FollowJointTrajectory.Goal = build_goal()
-        node.get_logger().info(f"Goal: {goal.trajectory.points[0].positions[0]}")
+    send_future = client.send_goal_async(goal)
+    rclpy.spin_until_future_complete(node, send_future)
+    goal_handle = send_future.result()
 
-        send_future = client.send_goal_async(goal)
-        rclpy.spin_until_future_complete(node, send_future)
-        goal_handle = send_future.result()
+    if goal_handle is None or not goal_handle.accepted:
+        node.get_logger().error("Goal rejected by server")
+        node.destroy_node()
+        rclpy.shutdown()
+        return
 
-        if goal_handle is None or not goal_handle.accepted:
-            node.get_logger().error("Goal rejected by server")
-            node.destroy_node()
-            rclpy.shutdown()
-            return
+    node.get_logger().info("Goal accepted, waiting for result...")
+    result_future = goal_handle.get_result_async()
+    rclpy.spin_until_future_complete(node, result_future)
+    result = result_future.result()
 
-        node.get_logger().info("Goal accepted, waiting for result...")
-        result_future = goal_handle.get_result_async()
-        rclpy.spin_until_future_complete(node, result_future)
-        result = result_future.result()
-
-        if result is None:
-            node.get_logger().error("Goal result unavailable")
-        else:
-            node.get_logger().info(f"Result: {result.result.error_code}")
+    if result is None:
+        node.get_logger().error("Goal result unavailable")
+    else:
+        node.get_logger().info(f"Result: {result.result.error_code}")
 
     node.destroy_node()
     rclpy.shutdown()
