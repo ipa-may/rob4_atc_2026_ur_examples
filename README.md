@@ -49,7 +49,7 @@ colcon build --packages-skip cartesian_controller_simulation cartesian_controlle
 
 ### Cartesian helper scripts
 ```sh
-colcon build --packages-select ur3e_ros2_cartesian_control_scripts_examples
+colcon build --symlink-install --packages-select ur3e_ros2_cartesian_control_scripts_examples
 ```
 
 ## Run
