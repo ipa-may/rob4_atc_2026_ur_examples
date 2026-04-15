@@ -207,3 +207,28 @@ ros2 topic echo /cartesian_force_controller/target_wrench
 ros2 run ur3e_ros2_cartesian_control_scripts_examples  cartesian_force_sender
 ```
 PS : This one does not work either.
+
+
+# Use MoveIt with the real Robot
+- (Universal Robot Documentation : https://docs.universal-robots.com/Universal_Robots_ROS2_Documentation/doc/ur_robot_driver/ur_moveit_config/doc/index.html )
+
+- Or better: https://docs.universal-robots.com/Universal_Robots_ROS2_Documentation/doc/ur_robot_driver/ur_robot_driver/doc/usage/move.html
+
+- Launch the wokcell in real :
+```sh
+ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e \
+  robot_ip:=<robot_ip> use_mock_hardware:=false \
+  initial_joint_controller:=joint_trajectory_controller
+```
+
+- Warning : You need to activate the `scaled_joint_trajectory` : 
+```sh
+ros2 control switch_controllers --activate scaled_joint_trajectory
+```
+
+- Launch MoveIt : 
+```sh
+ros2 launch ur_moveit_config ur_moveit.launch.py ur_type:=ur3e launch_rviz:=true
+```
+
+- If you want to planify with something else than OMPL : https://moveit.picknik.ai/main/doc/how_to_guides/pilz_industrial_motion_planner/pilz_industrial_motion_planner.html 
